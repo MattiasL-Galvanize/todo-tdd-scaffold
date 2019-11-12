@@ -1,9 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import {shallow} from 'enzyme'
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
-});
+import App from './App'
+
+describe('App', () => {
+  it('renders an h3 with the correct text', () => {
+    const wrapper = shallow(<App />);
+
+    expect(wrapper.find('h3#no-todos').text()).toEqual('Congrats! You have nothing to do!')
+  })
+})
